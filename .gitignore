@@ -1,2 +1,4 @@
 .gradle
 bookmark-rest/build
+**/.idea
+**.iml

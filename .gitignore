@@ -2,3 +2,4 @@
 bookmark-rest/build
 **/.idea
 **.iml
+**/out

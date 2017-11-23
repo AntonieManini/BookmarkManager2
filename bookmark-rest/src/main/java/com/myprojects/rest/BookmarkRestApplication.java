@@ -1,4 +1,4 @@
-package com.myprojects.bookmarkrest;
+package com.myprojects.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,21 @@
+<!-- <div id="export-import">	
+        <c:url value="/folders/add" var="addFolderUrl"/>	
+        <c:url value="/folders/export" var="exportUrl"/>
+        <c:url value="/folders/import" var="importUrl"/>
+
+        <div class="export-import-content">
+            <form name="exportForm" action="${exportUrl}" method="get">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input type="submit" value="Export"/>
+            </form>
+            
+            <form:form name="importForm" action="${importUrl}" method="post" commandName="importOption" enctype="multipart/form-data">
+                <input type="file" name="file"/>
+                <form:select path="option">
+                    <form:option value="merge">Merge</form:option>
+                    <form:option value="overwrite">Overwrite</form:option>
+                </form:select>
+                <input type="submit" value="Import"/>
+            </form:form>		
+        </div>
+</div> -->

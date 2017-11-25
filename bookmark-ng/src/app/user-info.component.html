@@ -1,0 +1,23 @@
+<!-- <div id="user-info">
+        <sec:authorize access="hasRole('ROLE_USER')">
+            <c:url var="logoutUrl" value="/logout"/>
+            
+            <form id="logoutForm" action="${logoutUrl}" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+            
+            <script>
+                function logoutForm() {
+                    document.getElementById("logoutForm").submit();
+                }
+            </script>
+            
+            <c:if test="${pageContext.request.userPrincipal.name != null }">
+                <div class="authenticated-user">
+                    <p>Hello, ${nickname}!</p>
+                    <button id="logoutButton" onclick="logoutForm()">Logout</button>
+                </div>
+            </c:if>
+            
+        </sec:authorize>
+</div> -->

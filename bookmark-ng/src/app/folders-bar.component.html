@@ -1,0 +1,9 @@
+<div class="folders-bar" (mouseenter)="showControls=true" (mouseleave)="showControls=false">
+    <div class="folder-name">
+        <p>{{folderName}}</p>
+    </div>
+    <div *ngIf="showControls" class="folder-controls">
+        <button>Edit</button>
+        <button>Delete</button>        
+    </div>
+</div>

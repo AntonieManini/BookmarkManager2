@@ -1,0 +1,4 @@
+<div *ngFor="let node of folders">
+    <folders-bar [folderName]="node.name"></folders-bar>
+    <app-folders-tree [folders]="node.children" *ngIf="node.children"></app-folders-tree>
+</div>

@@ -7,16 +7,22 @@ import { FoldersComponent } from './folders.component';
 import { BookmarksComponent } from './bookmarks.component';
 import { UserInfoComponent} from './user-info.component';
 import { ExportImportComponent } from './export-import.component';
+import { FoldersTreeComponent} from './folders-tree.component';
+import { FoldersBarComponent} from './folders-bar.component';
+
+import { SelectedFolderService } from './services/selected-folder.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent, FoldersComponent, BookmarksComponent, UserInfoComponent, ExportImportComponent
+    AppComponent, FoldersComponent,
+    BookmarksComponent, UserInfoComponent,
+    ExportImportComponent, FoldersTreeComponent, FoldersBarComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [SelectedFolderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

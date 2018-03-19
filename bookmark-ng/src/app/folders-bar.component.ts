@@ -5,7 +5,7 @@ import { Input } from '@angular/core';
 @Component({
     selector: 'folders-bar',
     templateUrl: './folders-bar.component.html',
-    styles: ['.folders-bar {width:250px; height:50px; background-color:blue} .folder-name {float:left} .folder-controls{float:right}']
+    styleUrls: ['./folders-bar.component.css']
 })
 export class FoldersBarComponent {
     @Input()

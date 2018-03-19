@@ -5,7 +5,8 @@ import { SelectedFolderService } from './services/selected-folder.service';
 
 @Component({
     selector: 'app-folders-tree',
-    templateUrl: './folders-tree.component.html'
+    templateUrl: './folders-tree.component.html',
+    styles: ['ul { list-style-type: none; }']
 })
 export class FoldersTreeComponent {
     @Input()

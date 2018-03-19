@@ -1,0 +1,14 @@
+.folders-bar {
+    width:250px;
+    height:50px;
+    background-color:blue;
+    display: inline-block
+}
+
+.folder-name {
+    float:left;
+}
+
+.folder-controls { 
+    float:right;
+}

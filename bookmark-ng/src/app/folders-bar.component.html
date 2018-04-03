@@ -1,9 +1,11 @@
 <div class="folders-bar" (mouseenter)="showControls=true" (mouseleave)="showControls=false">
     <div class="folder-name" (click)="loadBookmarks()">
-        <p>{{folder.name}}</p>
+        <p *ngIf="!isEditMode">{{folder.name}}</p>
+        <input *ngIf="isEditMode" value="{{folder.name}}" />
+        <button *ngIf="isEditMode" (click)="acceptEdit()">OK</button>
     </div>
     <div *ngIf="showControls" class="folder-controls">
-        <button>Edit</button>
-        <button>Delete</button>        
+        <button *ngIf="!isEditMode" (click)="onEdit()">Edit</button>
+        <button *ngIf="!isEditMode">Delete</button>        
     </div>
 </div>

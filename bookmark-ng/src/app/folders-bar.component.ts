@@ -12,6 +12,7 @@ export class FoldersBarComponent {
     @Input()
     folder: Folder;
     showControls: boolean = false;
+    isEditMode: boolean = false;
 
     constructor(private selectedFolderService: SelectedFolderService) {}
 
@@ -19,5 +20,13 @@ export class FoldersBarComponent {
         if (this.folder != null) {
             this.selectedFolderService.setFolder(this.folder);
         }
+    }
+
+    onEdit(): void {
+        this.isEditMode = true;
+    }
+
+    acceptEdit(): void {
+        this.isEditMode = false;
     }
 }

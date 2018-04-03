@@ -1,6 +1,6 @@
 <div class="folders-bar" (mouseenter)="showControls=true" (mouseleave)="showControls=false">
-    <div class="folder-name">
-        <p>{{folderName}}</p>
+    <div class="folder-name" (click)="loadBookmarks()">
+        <p>{{folder.name}}</p>
     </div>
     <div *ngIf="showControls" class="folder-controls">
         <button>Edit</button>

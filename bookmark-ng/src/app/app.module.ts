@@ -11,6 +11,7 @@ import { FoldersTreeComponent} from './folders-tree.component';
 import { FoldersBarComponent} from './folders-bar.component';
 
 import { SelectedFolderService } from './services/selected-folder.service';
+import { BookmarksService } from './services/bookmarks.service';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { SelectedFolderService } from './services/selected-folder.service';
   imports: [
     BrowserModule
   ],
-  providers: [SelectedFolderService],
+  providers: [SelectedFolderService, BookmarksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

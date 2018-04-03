@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Folder } from './model/Folder';
 import { Input } from '@angular/core';
+import { SelectedFolderService } from './services/selected-folder.service';
 
 @Component({
     selector: 'folders-bar',
@@ -9,6 +10,14 @@ import { Input } from '@angular/core';
 })
 export class FoldersBarComponent {
     @Input()
-    folderName: string;
+    folder: Folder;
     showControls: boolean = false;
+
+    constructor(private selectedFolderService: SelectedFolderService) {}
+
+    loadBookmarks(): void {
+        if (this.folder != null) {
+            this.selectedFolderService.setFolder(this.folder);
+        }
+    }
 }

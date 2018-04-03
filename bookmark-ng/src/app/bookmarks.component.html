@@ -10,6 +10,11 @@
             </form>	-->
         </div>
         <div class="items_content">
+            <ul *ngIf='selectedFolder'>
+                <li *ngFor='let b of bookmarks'>
+                    <p>{{b.name}}</p>
+                    <p>{{b.url}}</p>
+                </li>
+            </ul>
         </div>		
 </div>
-<!-- <p *ngIf='selectedFolder'>You clicked on {{selectedFolder}} folder!</p> -->

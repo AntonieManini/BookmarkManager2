@@ -1,20 +1,12 @@
-<div id="list-pane" class="pane">			
-        <div class="items_header">
-<!--            <form id="bookmarkAddForm">
-                <input id="inputDesc" type="text" required/>
-                <input id="inputUrl" type="url" required
-                    oninvalid="this.setCustomValidity('Should start with http://')"
-                    oninput="setCustomValidity('')"  />
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <input type="submit" value="Add New Bookmark"/>
-            </form>	-->
+<div id="list-pane" class="pane">
+    <div class="items_header" *ngIf='selectedFolder'>
+        <input [(ngModel)]="newBookmark.name"/>
+        <input [(ngModel)]="newBookmark.url"/>
+        <button (click)="addBookmark()">Save</button>
+    </div>
+    <div class="items_content" *ngIf='selectedFolder'>
+        <div *ngFor='let b of bookmarks'>
+            <bookmark-bar [bookmark]="b"></bookmark-bar>
         </div>
-        <div class="items_content">
-            <ul *ngIf='selectedFolder'>
-                <li *ngFor='let b of bookmarks'>
-                    <p>{{b.name}}</p>
-                    <p>{{b.url}}</p>
-                </li>
-            </ul>
-        </div>		
+    </div>
 </div>

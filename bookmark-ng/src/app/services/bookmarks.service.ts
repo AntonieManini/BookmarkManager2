@@ -1,10 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Folder } from '../model/Folder';
 import { Bookmark } from '../model/Bookmark';
+import { Observable } from 'rxjs/Observable';
+import { from } from 'rxjs/observable/from';
+
 
 @Injectable()
 export class BookmarksService {
-    public getBookmarksByFolder(folder: Folder): Bookmark[] {
+    private bookmarks: Bookmark[] = [];
+    private bookmarksObservable: Observable<Bookmark[]> = from([this.bookmarks]);
+
+    constructor() {
         const bookmarks1: Bookmark[] = [
             {
                 name: 'Google',
@@ -12,9 +18,7 @@ export class BookmarksService {
             }, {
                 name: 'Der Spiegel',
                 url: 'http://www.spiegel.de'
-            }
-        ];
-        const bookmarks2: Bookmark[] = [
+            },
             {
                 name: 'Yandex',
                 url: 'http://www.yandex.ru'
@@ -24,6 +28,23 @@ export class BookmarksService {
             }
         ];
 
-        return folder.name.indexOf('Folder') === 0 ? bookmarks1 : bookmarks2;
+        bookmarks1.forEach(b => this.bookmarks.push(b));
+    }
+
+    public getBookmarksByFolder(folder: Folder): Observable<Bookmark[]> {
+        return this.bookmarksObservable;
+    }
+
+    public deleteBookmark(bookmark: Bookmark): void {
+        let index: number;
+
+        index = this.bookmarks.indexOf(bookmark, 0);
+        if (index > -1) {
+            this.bookmarks.splice(index, 1);
+        }
+    }
+
+    addBookmark(newBookmark: Bookmark) {
+        this.bookmarks.push(newBookmark);
     }
 }

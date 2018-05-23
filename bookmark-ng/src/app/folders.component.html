@@ -1,12 +1,7 @@
 <div id="tree-pane" class="pane">
         <div class="items_header">
-<!--            <form id="folderAddForm">
-                <input class="newFolderName" type="text" name="name" 
-                    required pattern="[a-zA-Z0-9]+"
-                    oninvalid="this.setCustomValidity('Enter Alphanumeric Folder Name')"
-                    onchange="this.setCustomValidity('')"  />						
-                <input type="submit" value="Add New Folder"/>
-            </form>			-->
+            <input [(ngModel)]="newFolder.name"/>
+            <button (click)="onAdd()">Add</button>
         </div>
         <div class="items_content">
             <ul>

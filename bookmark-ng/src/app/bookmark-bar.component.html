@@ -1,0 +1,12 @@
+<div class="bookmark-bar" (mouseenter)="showControls=true" (mouseleave)="showControls=false">
+    <div class="bookmark-content">
+        <a *ngIf="!isEditMode" target="_blank" href="{{bookmark.url}}">{{bookmark.name}}</a>
+        <input *ngIf="isEditMode" [(ngModel)]="bookmark.name" placeholder="name"/>
+        <input *ngIf="isEditMode" [(ngModel)]="bookmark.url" placeholder="url"/>
+    </div>
+    <div class="bookmark-controls">
+        <button *ngIf="showControls && !isEditMode" (click)="onEdit()">Edit</button>
+        <button *ngIf="showControls && !isEditMode" (click)="onDelete(bookmark)">Delete</button>
+        <button *ngIf="isEditMode" (click)="acceptChanges()">OK</button>
+    </div>
+</div>

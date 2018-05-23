@@ -2,5 +2,11 @@
     <folders-bar [folder]="node"></folders-bar>
     <ul *ngIf="node.children">
         <app-folders-tree [folders]="node.children"></app-folders-tree>
+        <input *ngIf="isVisible(node)" [(ngModel)]="newFolder.name"/>
+        <button *ngIf="isVisible(node)" (click)="onSave()">Save</button>        
+    </ul>
+    <ul *ngIf="!node.children">
+        <input *ngIf="isVisible(node)" [(ngModel)]="newFolder.name"/>
+        <button *ngIf="isVisible(node)" (click)="onSave()">Save</button>        
     </ul>
 </li>

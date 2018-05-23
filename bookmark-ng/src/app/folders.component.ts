@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Folder } from './model/Folder';
+import { FoldersService } from './services/folders.service';
 
 @Component({
     selector: 'folders',
@@ -7,28 +8,22 @@ import { Folder } from './model/Folder';
     styles: ['ul { list-style-type: none; }']
 })
 export class FoldersComponent {
-/*    folders: Folder[] = [{
-        name: 'Folder1',
-        children: [{name: 'ChildFolder', children: []}]
-    }];*/
 
-    folders: Folder[] = [{
-        name: 'Folder1',
-        children: [{
-            name: 'Sub11',
-            children: []
-        }, {
-            name: 'Sub12',
-            children: []
-        }]
-    }, {
-        name: 'Folder2',
-        children: [{
-            name: 'Sub21',
-            children: [{
-                name: 'SubSub211',
-                children: []
-            }]
-        }]
-    }];
+    constructor(private folderService: FoldersService) {}
+
+    folders: Folder[];
+    newFolder: Folder = new Folder();
+
+    ngOnInit() {
+        this.getFolders();
+    }
+
+    getFolders(): void {
+        this.folderService.getFolders().subscribe(f => { this.folders = f as Folder[] });
+    }
+
+    onAdd() {
+        this.folderService.addFolder(this.newFolder);
+        this.newFolder = new Folder();
+    }
 }

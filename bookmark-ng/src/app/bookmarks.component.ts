@@ -10,7 +10,8 @@ import { Bookmark } from './model/Bookmark';
 })
 export class BookmarksComponent {
     selectedFolder: Folder;
-    public bookmarks: Bookmark[];
+    private bookmarks: Bookmark[];
+    newBookmark: Bookmark;
 
     constructor(private selectedFolderService: SelectedFolderService,
          private bookmarksService: BookmarksService) {}
@@ -19,10 +20,17 @@ export class BookmarksComponent {
         this.selectedFolderService.getFolder().subscribe((value: Folder) => {
             this.selectedFolder = value;
             this.loadBookmarksForFolder();
+            this.newBookmark = new Bookmark();
         });
     }
 
     private loadBookmarksForFolder(): void {
-        this.bookmarks = this.bookmarksService.getBookmarksByFolder(this.selectedFolder);
+        this.bookmarksService.getBookmarksByFolder(this.selectedFolder)
+            .subscribe(b => this.bookmarks = b);
+    }
+
+    addBookmark() {
+        this.bookmarksService.addBookmark(this.newBookmark);
+        this.newBookmark = new Bookmark();
     }
 }

@@ -1,12 +1,8 @@
 package com.myprojects.rest.dao;
 
 import com.myprojects.rest.model.Bookmark;
+import org.springframework.data.repository.CrudRepository;
 
-public interface BookmarkDao
+public interface BookmarkDao extends CrudRepository<Bookmark, Long>
 {
-    void create(Bookmark bookmark);
-
-    void update(Bookmark bookmark);
-
-    void delete(Bookmark bookmark);
 }

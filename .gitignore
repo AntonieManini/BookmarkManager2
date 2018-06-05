@@ -3,3 +3,5 @@ bookmark-rest/build
 **/.idea
 **.iml
 **/out
+**/node_modules
+**/.vscode

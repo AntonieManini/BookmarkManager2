@@ -1,16 +1,8 @@
 package com.myprojects.rest.dao;
 
 import com.myprojects.rest.model.Folder;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface FolderDao
+public interface FolderDao extends CrudRepository<Folder, Long>
 {
-    Folder get(int folderId);
-
-    void create(Folder folder);
-
-    void update(Folder folder);
-
-    void delete(Folder folder);
 }

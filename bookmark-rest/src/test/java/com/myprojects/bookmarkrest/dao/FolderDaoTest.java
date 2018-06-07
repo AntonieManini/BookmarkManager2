@@ -31,6 +31,6 @@ public class FolderDaoTest
         testFolder = new Folder();
         testFolder.setName("Test Folder");
 
-        folderDao.create(testFolder);
+        folderDao.save(testFolder);
     }
 }

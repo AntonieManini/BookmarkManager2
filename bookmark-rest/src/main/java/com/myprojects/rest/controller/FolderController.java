@@ -8,23 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/folders")
 public class FolderController
 {
     @Autowired
     FolderDao folderDao;
 
-    @GetMapping("/folders")
-    @ResponseBody
+    @GetMapping
     public List<Folder> getFolders() {
         return (List<Folder>) folderDao.findAll();
     }
 
-    @PostMapping("/folder/add")
-    @ResponseBody
-    public boolean addFolder(@RequestParam String name) {
-        Folder folder = new Folder();
-        folder.setName(name);
-
+    @PostMapping("/add")
+    public boolean addFolder(@RequestBody Folder folder) {
         try {
             folderDao.save(folder);
             return true;
@@ -33,13 +29,12 @@ public class FolderController
         }
     }
 
-    @PutMapping("/folder/{id}")
-    @ResponseBody
+    @PutMapping("/{id}")
     public boolean updateFolder(@RequestBody Folder folder) {
         return true;
     }
 
-    @DeleteMapping("/folder/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteFolder(@PathVariable long id) {
         try {
             folderDao.delete(id);

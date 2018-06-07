@@ -1,5 +1,7 @@
 package com.myprojects.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -38,6 +40,7 @@ public class Bookmark {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="FOLDER_ID")
+    @JsonBackReference
     public Folder getFolder() {
         return folder;
     }

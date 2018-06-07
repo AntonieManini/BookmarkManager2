@@ -1,5 +1,7 @@
 package com.myprojects.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -54,6 +56,7 @@ public class Folder {
     }
 
     @OneToMany(fetch= FetchType.LAZY, mappedBy="parent")
+    @JsonManagedReference
     public List<Folder> getChildren() {
         return children;
     }

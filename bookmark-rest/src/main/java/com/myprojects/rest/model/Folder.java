@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name="FOLDER")
 public class Folder {
-    private Integer folderId;
+    private long folderId;
     private String name;
 
     private Folder parent;
@@ -23,10 +23,10 @@ public class Folder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="FOLDER_ID", length=4, nullable=false)
-    public Integer getFolderId() {
+    public long getFolderId() {
         return folderId;
     }
-    public void setFolderId(Integer folderId) {
+    public void setFolderId(long folderId) {
         this.folderId = folderId;
     }
 
@@ -38,6 +38,7 @@ public class Folder {
         this.name = name;
     }
 
+    @JsonManagedReference
     @OneToMany(fetch=FetchType.LAZY, mappedBy="folder")
     public Set<Bookmark> getBookmarks() {
         return bookmarks;
@@ -56,11 +57,18 @@ public class Folder {
     }
 
     @OneToMany(fetch= FetchType.LAZY, mappedBy="parent")
-    @JsonManagedReference
     public List<Folder> getChildren() {
         return children;
     }
     public void setChildren(List<Folder> children) {
         this.children = children;
+    }
+
+    public void addChild(Folder folder) {
+        if (this.children == null) {
+            this.children = new LinkedList<>();
+        }
+
+        this.children.add(folder);
     }
 }

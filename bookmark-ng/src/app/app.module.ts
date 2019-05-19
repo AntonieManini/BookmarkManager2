@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FoldersComponent } from './folders.component';
@@ -14,6 +14,8 @@ import { BookmarkBarComponent } from './bookmark-bar.component';
 import { SelectedFolderService } from './services/selected-folder.service';
 import { BookmarksService } from './services/bookmarks.service';
 import { FoldersService } from './services/folders.service';
+import { DummyFoldersService } from './services/folders-dummy.service';
+import { HttpFoldersService } from './services/folders-http.service';
 import { AddNewFolderObservable } from './services/AddNewFolderObservable';
 
 import { FormsModule } from '@angular/forms';
@@ -28,9 +30,10 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [SelectedFolderService, BookmarksService, FoldersService, AddNewFolderObservable],
+  providers: [SelectedFolderService, BookmarksService, {provide: FoldersService, useClass: HttpFoldersService}, AddNewFolderObservable],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

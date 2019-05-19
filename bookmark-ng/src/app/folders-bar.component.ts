@@ -13,8 +13,8 @@ import { AddNewFolderObservable } from './services/AddNewFolderObservable';
 export class FoldersBarComponent {
     @Input()
     folder: Folder;
-    showControls: boolean = false;
-    isEditMode: boolean = false;
+    showControls = false;
+    isEditMode = false;
 
     constructor(private selectedFolderService: SelectedFolderService,
                 private foldersService: FoldersService,
@@ -41,5 +41,6 @@ export class FoldersBarComponent {
 
     acceptEdit(): void {
         this.isEditMode = false;
+        this.foldersService.updateFolder(this.folder);
     }
 }
